@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     AtomicInteger pos = new AtomicInteger();
     StateProgressBar stateProgressBar = findViewById(R.id.state_progress_bar);
-    stateProgressBar.addState("Review order", "Review order", "Review order","Review order", "Review order", "Review order");
+    stateProgressBar.addState("Shipping", "Shipping", "Shipping","Shipping", "Shipping", "Shipping");
     stateProgressBar.setStatePos(0);
 
     Button btnLeft = findViewById(R.id.left);

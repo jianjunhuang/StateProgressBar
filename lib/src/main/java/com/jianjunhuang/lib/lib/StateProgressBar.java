@@ -175,7 +175,7 @@ public class StateProgressBar extends View {
       //draw text
       String text = mStates.get(i);
       Rect rect = mTextRect.get(i);
-      canvas.drawText(text, x - (rect.width() >> 1), getHeight() - getPaddingBottom(),
+      canvas.drawText(text, x - (rect.width() >> 1), getHeight() - getPaddingBottom() - 10,
           mStateTextPaint);
     }
   }
