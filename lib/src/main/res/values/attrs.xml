@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="StateProgressBar">
+    <attr format="color" name="finishColor"/>
+    <attr format="color" name="unFinishColor"/>
+    <attr format="color" name="textFinishColor"/>
+    <attr format="color" name="textUnFinishColor"/>
+    <attr format="color" name="centerDotColor"/>
+    <attr format="dimension|reference" name="stateTextSize"/>
+    <attr format="dimension|reference" name="centerDotRadius"/>
+    <attr format="dimension|reference" name="RingRadius"/>
+    <attr format="dimension|reference" name="textMarginTop"/>
+  </declare-styleable>
+</resources>
