@@ -2,6 +2,8 @@ package com.jianjunhuang.lib.lib;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,6 +12,7 @@ import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.PathDashPathEffect;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.support.annotation.IntDef;
 import android.util.AttributeSet;
@@ -55,7 +58,8 @@ public class StateProgressBar extends View {
 
   private @Orientation
   int mOrientation = Orientation.HORIZONTAL;
-
+  private Bitmap mTickBmp;
+  private RectF mTickRect;
   private List<String> mStates = new ArrayList<>();
   private List<Rect> mTextRect = new ArrayList<>();
 
@@ -114,6 +118,8 @@ public class StateProgressBar extends View {
     PathDashPathEffect mEffects = new PathDashPathEffect(path, 12, 12,
         PathDashPathEffect.Style.ROTATE);
     mStateLinePaint.setPathEffect(mEffects);
+    mTickBmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_tick);
+    mTickRect = new RectF();
   }
 
   @Override
@@ -169,7 +175,14 @@ public class StateProgressBar extends View {
       }
       //draw circle
       canvas.drawCircle(x, mStateRadius, mStateRadius, mStatePaint);
-      if (i <= mStatePos) {
+      if (i < mStatePos) {
+        float rate = mDotRadius * 2 / mTickBmp.getWidth();
+        float width = (mTickBmp.getWidth() * rate) / 2;
+        float height = (mTickBmp.getHeight() * rate) / 2;
+        mTickRect.set(x - width, mStateRadius - height, x + width,
+            mStateRadius + height);
+        canvas.drawBitmap(mTickBmp, null, mTickRect, mDotPaint);
+      } else if (i == mStatePos) {
         canvas.drawCircle(x, mStateRadius, mDotRadius, mDotPaint);
       }
       //draw text
