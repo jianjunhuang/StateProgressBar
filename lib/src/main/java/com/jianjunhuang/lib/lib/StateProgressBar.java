@@ -74,7 +74,7 @@ public class StateProgressBar extends View {
 
   public StateProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
-
+    setLayerType(LAYER_TYPE_SOFTWARE,null);
     mStatePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     mStateLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -110,8 +110,6 @@ public class StateProgressBar extends View {
 
     mStateTextPaint.setTextSize(mTextSize);
     mStateTextPaint.setColor(Color.BLACK);
-
-    mStateTextPaint.setTypeface(Typeface.create(Typeface.DEFAULT, 500, false));
 
     Path path = new Path();
     path.addCircle(0, 0, 3, Direction.CCW);
